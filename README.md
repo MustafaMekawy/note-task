@@ -1,10 +1,10 @@
 ##.env              
-DATABASE_URL="your_db_url"
-JWT_SECRET="any_ecrt"
-JWT_EXPIRES_IN='1d'
+DATABASE_URL="your_db_url", 
+JWT_SECRET="any_ecrt", 
+JWT_EXPIRES_IN='1d', 
 
-ENCRYPT_CODE_PASS="reset_your_password_now"
-EMAIL=""
+ENCRYPT_CODE_PASS="reset_your_password_now", 
+EMAIL="", 
 APIKEY=''
 
 
