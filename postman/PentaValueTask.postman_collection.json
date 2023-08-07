@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "1a934c61-2e7c-4789-97d5-9c616e6529b0",
+		"name": "PentaValueTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24898486"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mustafa\",\r\n    \"email\": \"mustafa@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"passwordConfirm\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}auth/signup",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().result);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"email\": \"islam@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}auth/signin",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"oa20180180@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/forgetpassword",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"forgetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"504251\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/confirmcode",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"confirmcode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newPassword\": \"cs123\",\r\n    \"newPasswordConfirm\": \"cs123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/resetpassword",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", '');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}auth/logout",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign New Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}auth/assignadmin/68067e34-73b2-4e36-a669-815cc0989805",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"assignadmin",
+								"68067e34-73b2-4e36-a669-815cc0989805"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "noteType",
+			"item": [
+				{
+					"name": "create note Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"congrats\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}notetype",
+							"host": [
+								"{{url}}notetype"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create note type",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"congrats\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}notetype",
+									"host": [
+										"{{url}}notetype"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-G0cwBr39os2Xi3vIG8jmqebCnAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 05:23:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"Created\",\n    \"message\": \"note type created succssflly\",\n    \"data\": {\n        \"id\": \"2ebb5602-e3a7-45bd-b123-af7b3f5befaf\",\n        \"name\": \"congrats\",\n        \"disabled\": false\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "note",
+			"item": [
+				{
+					"name": "send note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "congrats bro",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "hey ahmed congratulation for the mew role i wish to meet you soon bro",
+									"type": "text"
+								},
+								{
+									"key": "typeId",
+									"value": "2b6a6561-5a54-42b0-afdd-89275975b363",
+									"type": "text"
+								},
+								{
+									"key": "media",
+									"type": "file",
+									"src": [
+										"/C:/Users/manom/OneDrive/Desktop/Mahmoud Mohamed zaki cv.pdf",
+										"/C:/Users/manom/OneDrive/Desktop/New Text Document.txt",
+										"/C:/Users/manom/OneDrive/Desktop/ODC Ce.pdf"
+									]
+								},
+								{
+									"key": "userIds[0]",
+									"value": "82af42d0-f26d-48ab-a232-4874702aafca",
+									"type": "text"
+								},
+								{
+									"key": "userIds[1]",
+									"value": "6f6c6d95-9a10-41db-b213-bbed02fb9aba",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}note",
+							"host": [
+								"{{url}}note"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "timeline",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}note/timeline?typeIds=2b6a6561-5a54-42b0-afdd-89275975b363,7d238944-8408-435d-a627-6481eee81a59&page=1&pageSize=2",
+							"host": [
+								"{{url}}note"
+							],
+							"path": [
+								"timeline"
+							],
+							"query": [
+								{
+									"key": "typeIds",
+									"value": "2b6a6561-5a54-42b0-afdd-89275975b363,7d238944-8408-435d-a627-6481eee81a59"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "soft deleted notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"noteIds\":[\"405d9ebc-43a7-4853-946d-b92f1a306a28\",\"efe500e7-ff3e-4f32-9b22-850dff4585b9\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}user/deleteNotes",
+							"host": [
+								"{{url}}user"
+							],
+							"path": [
+								"deleteNotes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "soft delete Notes",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"noteIds\":[\"405d9ebc-43a7-4853-946d-b92f1a306a28\",\"efe500e7-ff3e-4f32-9b22-850dff4585b9\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}user/deleteNotes",
+									"host": [
+										"{{url}}user"
+									],
+									"path": [
+										"deleteNotes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-WM7NZoEUa9DbfpirQaaqOxIz6FM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Aug 2023 14:57:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"Success\",\n    \"message\": \"notes deleted\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(uuid())
+  name           String
+  profilePicture String?
+  notes          UserNote[]
+  email              String    @unique  
+  password           String 
+  role               String    @default("user")
+  resetPasswordToken String?
+  resetExpiresTime   DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  authorId  String?
+  title     String
+  message   String
+  type      NoteType @relation(fields: [typeId], references: [id])
+  typeId    String
+  disabled Boolean  @default(false)
+  media     media[]
+  users     UserNote[]
+  createdAt DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model UserNote {
+  userId   String 
+  noteId   String 
+  user   User     @relation(fields: [userId], references: [id])
+  note   Note     @relation(fields: [noteId], references: [id])
+
+  @@id([userId, noteId])
+}
+
+model NoteType {
+  id       String  @id @default(uuid())
+  name     String
+  disabled Boolean  @default(false)
+  notes    Note[]
+}
+
+model media {
+  id     String @id @default(uuid())
+  note   Note   @relation(fields: [noteId], references: [id])
+  noteId   String @map("note_id")
+  file   String
+}
+

@@ -1,0 +1,7 @@
+اى كورس هعرضلو اذا كان انرول ولا لا
+course status{enroll,not enroll}
+ if he enrole course "start code" not exist
+course code"ODC1225"
+dB,unifirsty,
+attendas by location
+uinversity table
