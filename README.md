@@ -1,3 +1,13 @@
+##.env              
+DATABASE_URL="your_db_url"
+JWT_SECRET="any_ecrt"
+JWT_EXPIRES_IN='1d'
+
+ENCRYPT_CODE_PASS="reset_your_password_now"
+EMAIL=""
+APIKEY=''
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -57,14 +67,7 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-##.env
-DATABASE_URL="your_db_url"
-JWT_SECRET="any_ecrt"
-JWT_EXPIRES_IN='1d'
 
-ENCRYPT_CODE_PASS="reset_your_password_now"
-EMAIL=""
-APIKEY=''
 
 ## Support
 
